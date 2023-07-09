@@ -29,7 +29,6 @@ function outputsNumbers (min, max,) {
     }
 }
 document.write (`<p>Числа в прямом порядке: ${outputsNumbers (start, end,)}</p>`)
-console.log (outputsNumbers (start, end,))
 
 function outputsNumbers1 (min, max,) {
     let str: string = ''
@@ -40,37 +39,82 @@ function outputsNumbers1 (min, max,) {
     }
 }
 document.write (`<p>Числа в обратном порядке: ${outputsNumbers1 (start, end,)}</p>`)
-console.log (outputsNumbers1 (start, end,))
 document.write (`<hr>`)
 document.write (`<p>3. Написать функцию, которая выводит переданное ей число задом наперед. Например: число 1234 вывести как 4321.</p>`)
 
 let num: string = '87654'
-function flipTheNumber (s) {
-    let arr: any = []
-    if (s < 0) {
-        return arr
+document.write (`<p>Дано число: ${num}</p>`)
+function flipTheNumber (s, i) {
+    let a: string
+    if (i == 0) {
+        return a = s[i]
     } else {
-        return arr.push(num [flipTheNumber (s-1)])
+        return a = s[i] + flipTheNumber (s, --i)
     }
     
 }
-console.log (flipTheNumber (num.length - 1))
 
+document.write (`<p>Перевернули это число: ${flipTheNumber (num, num.length - 1)}</p>`)
+document.write (`<hr>`)
+document.write (`<p>4. Написать функцию, которая считает сумму цифр числа.
+Например: число 1357, сумма 1 + 3 + 5 + 7 = 16.</p>`)
 
+function sumDigitsOfTheNumber (s, i) {
+    let sum
+   // console.log (s)
+   // console.log (i)
+   // console.log (Number(s[i]))
+    if (i == 0) {
+        return sum = +s[i]
+    } else {
+        return  sum = +s[i] + (+sumDigitsOfTheNumber (s, --i))
+    }
+}
 
-
-
-
-
-
-document.write (`<p></p>`)
+document.write (`<p>Сумма цифр числа "${num}" равна: ${sumDigitsOfTheNumber (num, num.length - 1)}</p>`)
+document.write (`<hr>`)
+document.write (`<p>5. Написать функцию, которая принимает число и выводит
+соответствующее количество вложенных пар круглых скобок.
+Например: число 4 – (((()))).</p>`)
 /*
+let brackets:any [] =[]
+function printTheBrackets (num){
+    if (num == 1){
+        
+        return brackets.unshift('(') + brackets.push(')')
+    }else{
+        
+        return brackets.unshift('(') + brackets.push(')') + printTheBrackets (--num)
+    }
+}
+console.log (printTheBrackets (5))
+console.log (brackets.join(''))
+*/
+function printTheBrackets (num) {
+    if (num == 1){
+        return '('+')'
+    } else {
+        return '('+ printTheBrackets (num - 1)+')'
+    }
+}
 
-3. Написать функцию, которая выводит переданное ей число
-задом наперед.
-Например: число 1234 вывести как 4321.
-4. Написать функцию, которая считает сумму цифр числа.
-Например: число 1357, сумма 1 + 3 + 5 + 7 = 16.
+document.write (`<p>число 5 - ${printTheBrackets (5)}</p>`)
+document.write (`<p>число 10 - ${printTheBrackets (10)}</p>`)
+
+
+
+
+
+
+
+
+
+
+
+/*
+document.write (`<p></p>`)
+
+
 5. Написать функцию, которая принимает число и выводит
 соответствующее количество вложенных пар круглых скобок.
 Например: число 4 – (((()))).
